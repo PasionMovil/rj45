@@ -1,0 +1,683 @@
+.royalSlider {
+    position: relative;
+    height: 475px;
+    direction: ltr;
+}
+.royalSlider > * { float: left }
+.rsWebkit3d .rsSlide { -webkit-transform: translateZ() }
+.rsWebkit3d .rsSlide,
+.rsWebkit3d .rsContainer,
+.rsWebkit3d .rsThumbs,
+.rsWebkit3d .rsPreloader,
+.rsWebkit3d img,
+.rsWebkit3d .rsOverflow,
+.rsWebkit3d .rsBtnCenterer,
+.rsWebkit3d .rsAbsoluteEl,
+.rsWebkit3d .rsABlock,
+.rsWebkit3d .rsLink { -webkit-backface-visibility: hidden }
+.rsFade.rsWebkit3d .rsSlide,
+.rsFade.rsWebkit3d img,
+.rsFade.rsWebkit3d .rsContainer { -webkit-transform: none }
+.rsOverflow {
+    position: relative;
+    float: left;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.rsVisibleNearbyWrap {
+    position: relative;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.rsVisibleNearbyWrap .rsOverflow {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.rsContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.rsArrow,
+.rsThumbsArrow { cursor: pointer }
+.rsThumb {
+    position: relative;
+    float: left;
+}
+.rsArrow,
+.rsNav,
+.rsThumbsArrow {
+    opacity: 1;
+    -webkit-transition: opacity 0.3s linear;
+    -moz-transition: opacity 0.3s linear;
+    -o-transition: opacity 0.3s linear;
+    transition: opacity 0.3s linear;
+}
+.rsHidden {
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+    -moz-transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+    -o-transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+    transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+}
+.rsGCaption {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+/* Fullscreen options, very important ^^ */
+.royalSlider.rsFullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    z-index: 2147483647 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    height: auto !important;
+}
+.royalSlider .rsSlide.rsFakePreloader {
+    display: none;
+    opacity: 1 !important;
+    -webkit-transition: 0s;
+    -moz-transition: 0s;
+    -o-transition: 0s;
+    transition: 0s;
+}
+.rsSlide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.royalSlider.rsAutoHeight,
+.rsAutoHeight .rsSlide { height: auto }
+.rsContent {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.rsPreloader {
+    position: absolute;
+    z-index: 0;
+}
+.rsNav {
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.rsNavItem { -webkit-tap-highlight-color: rgba(0,0,0,0.25) }
+.rsThumbs {
+    position: relative;
+    z-index: 22;
+    float: left;
+    overflow: hidden;
+    cursor: pointer;
+}
+.rsTabs {
+    float: left;
+    background: none !important;
+}
+.rsTabs,
+.rsThumbs {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.rsVideoContainer {
+    position: relative;
+    /*left: 0;;
+    top: 0;
+    position: absolute;*/
+    /*width: 100%;;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    float: left;*/
+    width: auto;
+    height: auto;
+    line-height: 0;
+}
+.rsVideoFrameHolder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #141414;
+    opacity: 0;
+    -webkit-transition: .3s;
+}
+.rsVideoFrameHolder.rsVideoActive { opacity: 1 }
+.rsVideoContainer iframe,
+.rsVideoContainer video,
+.rsVideoContainer embed,
+.rsVideoContainer .rsVideoObj {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+}
+/* ios controls over video bug, shifting video */
+.rsVideoContainer.rsIOSVideo iframe,
+.rsVideoContainer.rsIOSVideo video,
+.rsVideoContainer.rsIOSVideo embed {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 44px;
+}
+img.rsImg {
+    max-width: none;
+    background: #fff;
+}
+.grab-cursor { cursor: url(grab.png) 8 8, move }
+.grabbing-cursor { cursor: url(grabbing.png) 8 8, move }
+.rsNoDrag { cursor: auto }
+.rsLink {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(blank.gif);
+}
+/* Background */
+.rsDefault,
+.rsDefault .rsOverflow,
+.rsDefault .rsSlide,
+.rsDefault .rsVideoFrameHolder,
+.rsDefault .rsThumbs {
+    background-color: #fff;
+    color: #FFF;
+}
+/***************
+*
+*  1. Arrows
+*
+****************/
+.rsDefault .rsArrow {
+    position: absolute;
+    z-index: 21;
+    display: block;
+    width: 44px;
+    height: 80%;
+    cursor: pointer;
+}
+.rsDefault.rsVer .rsArrow {
+    width: 100%;
+    height: 44px;
+}
+.rsDefault.rsVer .rsArrowLeft {
+    top: 0;
+    left: 0;
+}
+.rsDefault.rsVer .rsArrowRight {
+    bottom: 0;
+    left: 0;
+}
+.rsDefault.rsHor .rsArrowLeft {
+    top: 0;
+    left: 0;
+}
+.rsDefault.rsHor .rsArrowRight {
+    top: 0;
+    right: 0;
+}
+.rsDefault .rsArrowIcn {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    margin-top: -16px;
+    margin-left: -16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 2px;
+    background: url('rs-default.png');
+    background-color: rgba(68,68,68,0.85);
+    cursor: pointer;
+}
+.rsDefault .rsArrowIcn:hover { background-color: rgba(68,68,68,1) }
+.rsDefault.rsHor .rsArrowLeft .rsArrowIcn { background-position: -64px -32px }
+.rsDefault.rsHor .rsArrowRight .rsArrowIcn { background-position: -64px -64px }
+.rsDefault.rsVer .rsArrowLeft .rsArrowIcn { background-position: -96px -32px }
+.rsDefault.rsVer .rsArrowRight .rsArrowIcn { background-position: -96px -64px }
+.rsDefault .rsArrowDisabled .rsArrowIcn {
+    opacity: .2;
+    filter: alpha(opacity=20);
+    *display: none;
+}
+/***************
+*
+*  2. Bullets
+*
+****************/
+.rsDefault .rsBullets {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 35;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    background: #000;
+    background: rgba(0,0,0,0.75);
+    text-align: center;
+    line-height: 8px;
+}
+.rsDefault .rsBullet {
+    display: inline-block;
+    padding: 6px 5px 6px;
+    width: 8px;
+    height: 8px;
+    *display: inline;
+    *zoom: 1;
+}
+.rsDefault .rsBullet span {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #777;
+    background: rgba(255,255,255,0.5);
+}
+.rsDefault .rsBullet.rsNavSelected span { background-color: #FFF }
+/***************
+*
+*  3. Thumbnails
+*
+****************/
+.rsDefault .rsThumbsHor {
+    width: 100%;
+    height: 72px;
+}
+.rsDefault .rsThumbsVer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+}
+.rsDefault.rsWithThumbsHor .rsThumbsContainer {
+    position: relative;
+    height: 100%;
+}
+.rsDefault.rsWithThumbsVer .rsThumbsContainer {
+    position: relative;
+    width: 100%;
+}
+.rsDefault .rsThumb { float: left }
+.rsDefault .rsThumb img {
+    float: right;
+    width: 70px;
+    height: 100%;
+}
+.rsDefault .rsThumb.rsNavSelected { background: #03a9f4 }
+.rsDefault .rsTmb { display: block }
+/* Thumbnails with text */
+.rsDefault .rsTmb h5 {
+    margin: 0;
+    padding: 0;
+    padding-right: 80px;
+    color: rgba(0,0,0,0.87);
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 16px;
+}
+.rsDefault .rsTmb:hover h5 {
+    color: #fff;
+}
+.rsDefault .rsTmb span {
+    margin: 0;
+    padding: 0;
+    color: #eee;
+    font-size: 13px;
+    line-height: 18px;
+}
+/* Thumbnails arrow icons */
+.rsDefault .rsThumbsArrow {
+    position: absolute;
+    z-index: 21;
+    display: block;
+    width: 20px;
+    height: 100%;
+    background: #000;
+    background: rgba(255,255,255,0.9);
+    cursor: pointer;
+    transition: all 250ms linear;
+}
+.rsDefault .rsThumbsArrow:hover {
+    background: rgba(255,255,255,1);
+    transition: all 250ms linear;
+}
+.rsDefault.rsWithThumbsVer .rsThumbsArrow {
+    width: 100%;
+    height: 20px;
+}
+.rsDefault.rsWithThumbsVer .rsThumbsArrowLeft {
+    top: 0;
+    left: 0;
+}
+.rsDefault.rsWithThumbsVer .rsThumbsArrowRight {
+    bottom: 0;
+    left: 0;
+}
+.rsDefault.rsWithThumbsHor .rsThumbsArrowLeft {
+    top: 0;
+    left: 0;
+}
+.rsDefault.rsWithThumbsHor .rsThumbsArrowRight {
+    top: 0;
+    right: 0;
+}
+.rsDefault.rsWithThumbsHor .rsThumbsArrowLeft .rsThumbsArrowIcn { background-position: -128px -32px }
+.rsDefault.rsWithThumbsHor .rsThumbsArrowRight .rsThumbsArrowIcn { background-position: -128px -48px }
+.rsDefault.rsWithThumbsVer .rsThumbsArrowLeft .rsThumbsArrowIcn {
+    position: relative;
+    top: -2px;
+    color: rgba(0,0,0,1);
+    text-align: center;
+    font-size: 15px;
+    font-family: 'FontAwesome';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.rsDefault.rsWithThumbsVer .rsThumbsArrowLeft .rsThumbsArrowIcn:before { content: "\f106" }
+.rsDefault.rsWithThumbsVer .rsThumbsArrowRight .rsThumbsArrowIcn {
+    position: relative;
+    top: -2px;
+    color: rgba(0,0,0,1);
+    text-align: center;
+    font-size: 15px;
+    font-family: 'FontAwesome';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.rsDefault.rsWithThumbsVer .rsThumbsArrowRight .rsThumbsArrowIcn:before { content: "\f107" }
+.rsDefault .rsThumbsArrowDisabled { display: none !important }
+/* Thumbnails resizing on smaller screens */
+@media screen and (min-width: 0px) and (max-width: 800px) { 
+    .rsDefault .rsThumb {
+        width: 59px;
+        height: 44px;
+    }
+    .rsDefault .rsThumbsHor { height: 44px }
+    .rsDefault .rsThumbsVer { width: 59px }
+}
+/***************
+*
+*  4. Tabs
+*
+****************/
+.rsDefault .rsTabs {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    padding-top: 12px;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+.rsDefault .rsTab {
+    display: inline-block;
+    padding: 5px 13px 6px;
+    min-width: 72px;
+    width: auto;
+    height: auto;
+    border: 1px solid #D9D9DD;
+    border-right: 1px solid #f5f5f5;
+    background-color: #FFF;
+    background-image: -webkit-linear-gradient(top, #fefefe, #f4f4f4);
+    background-image: -moz-linear-gradient(top, #fefefe, #f4f4f4);
+    background-image: linear-gradient(to bottom, #fefefe, #f4f4f4);
+    -webkit-box-shadow: inset 1px 0 0 #fff;
+    box-shadow: inset 1px 0 0 #fff;
+    color: #333;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    *display: inline;
+    *zoom: 1;
+}
+.rsDefault .rsTab:first-child {
+    -webkit-border-top-left-radius: 4px;
+    border-top-left-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.rsDefault .rsTab:last-child {
+    border-right: 1px solid #cfcfcf;
+    -webkit-border-top-right-radius: 4px;
+    border-top-right-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.rsDefault .rsTab:active {
+    border: 1px solid #D9D9DD;
+    background-color: #f4f4f4;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) inset;
+}
+.rsDefault .rsTab.rsNavSelected {
+    border: 1px solid #999;
+    background: #ACACAC;
+    background-image: -webkit-linear-gradient(top, #ACACAC, #BBB);
+    background-image: -moz-llinear-gradient(top, #ACACAC, #BBB);
+    background-image: linear-gradient(to bottom, #ACACAC, #BBB);
+    box-shadow: 0 1px 9px rgba(102, 102, 102, 0.65) inset;
+    color: #FFF;
+    text-shadow: 1px 1px #838383;
+}
+/***************
+*
+*  5. Fullscreen button
+*
+****************/
+.rsDefault .rsFullscreenBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 22;
+    display: block;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+}
+.rsDefault .rsFullscreenIcn {
+    display: block;
+    margin: 6px;
+    width: 32px;
+    height: 32px;
+    border-radius: 2px;
+    background: url('rs-default.png') 0 0;
+    background-color: #000;
+    background-color: rgba(0,0,0,0.75);
+    *background-color: #000;
+}
+.rsDefault .rsFullscreenIcn:hover { background-color: rgba(0,0,0,0.9) }
+.rsDefault.rsFullscreen .rsFullscreenIcn { background-position: -32px 0 }
+/***************
+*
+*  6. Play/close video button
+*
+****************/
+.rsDefault .rsPlayBtn {
+    margin-top: -32px;
+    margin-left: -32px;
+    width: 64px;
+    height: 64px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.3);
+}
+.rsDefault .rsPlayBtnIcon {
+    display: block;
+    width: 64px;
+    height: 64px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background: url(rs-default.png) no-repeat 0 -32px;
+    background-color: #000;
+    background-color: rgba(0,0,0,0.75);
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    transition: .3s;
+    *background-color: #000;
+}
+.rsDefault .rsPlayBtn:hover .rsPlayBtnIcon { background-color: rgba(0,0,0,0.9) }
+.rsDefault .rsBtnCenterer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+.rsDefault .rsCloseVideoBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 500;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    -webkit-transform: translateZ();
+    -webkit-backface-visibility: hidden;
+}
+.rsDefault .rsCloseVideoBtn.rsiOSBtn {
+    top: -38px;
+    right: -6px;
+}
+.rsDefault .rsCloseVideoIcn {
+    margin: 6px;
+    width: 32px;
+    height: 32px;
+    background: url('rs-default.png') -64px 0;
+    background-color: #000;
+    background-color: rgba(0,0,0,0.75);
+    *background-color: #000;
+}
+.rsDefault .rsCloseVideoIcn:hover { background-color: rgba(0,0,0,0.9) }
+/***************
+*
+*  7. Preloader
+*
+****************/
+.rsDefault .rsPreloader {
+    top: 50%;
+    left: 50%;
+    margin-top: -10px;
+    margin-left: -10px;
+    width: 20px;
+    height: 20px;
+    background-image: url('preloader-white.gif');
+}
+/***************
+*
+*  8. Global caption
+*
+****************/
+.rsDefault .rsGCaption {
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    float: none;
+    padding: 2px 8px;
+    width: auto;
+    border-radius: 2px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.75);
+    color: #FFF;
+    text-align: left;
+    font-size: 12px;
+}
+#dankov-video-gallery {
+    width: 100%;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+.videoGallery .rsTmb { padding: 10px }
+.videoGallery .rsThumbs .rsThumb {
+    width: 301px;
+    height: 90px;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+    transition: all 250ms linear;
+}
+.videoGallery .rsThumbs .rsThumb:hover {
+    width: 301px;
+    height: 90px;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+    background: #03a9f4;
+    transition: all 250ms linear;
+}
+.videoGallery .rsThumbs {
+    padding: 0;
+    width: 301px;
+}
+.videoGallery .rsThumb:hover { background: #fff; font-weight: 400; }
+.videoGallery .rsThumb:hover h5 { color:#fff;}
+.videoGallery .rsThumb.rsNavSelected { background-color: #03a9f4;  }
+.videoGallery .rsThumb.rsNavSelected h5 { color: #fff; }
+.rsABlock {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 15;
+    width: 100%;
+    background: rgba(68,68,68,0.85);
+}
+.slider-text p,
+.slider-text h3 {
+    overflow: hidden;
+    margin: 0px;
+    padding: 15px 15px 0px 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #fff;
+}
+.slider-text h3 a {
+    color: #fff;
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 300;
+    font-size: 24px;
+}
+.slider-text h3 a:hover { color: #03a9f4 }
+.rsBlock-meta {
+    display: inline-block;
+    margin: 17px 0px 10px 15px;
+    padding: 0;
+}
+.rsBlock-meta li {
+    float: left;
+    margin-right: 15px;
+    padding: 3px;
+    list-style: none;
+}
+.rsBlock-meta li a {
+    color: #fff;
+    letter-spacing: normal;
+    font-weight: 300;
+    font-size: 13px;
+}
+.rsBlock-meta li i {
+    position: relative;
+    top: 2px;
+    padding-right: 7px;
+    color: #fff;
+    color: #03a9f4;
+    font-size: 16px;
+    opacity: 1;
+    -webkit-transform: none;
+}
