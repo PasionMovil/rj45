@@ -224,7 +224,7 @@ if ($add_carousel) :
                         if (has_post_thumbnail()) {
                             $thumb = $thumb[0];
                         } else {
-                            $thumb = 'http://fakeimg.pl/135x85/?text=?&font=bebas';
+                            $thumb = 'https://fakeimg.pl/135x85/?text=?&font=bebas';
                         }
 
                         $thumb = '<img src="'. $thumb .'" alt="'. $title .'" />';
