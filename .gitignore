@@ -51,3 +51,5 @@ site/wp-content/uploads
 site/wp-content/wptouch-data/cache
 site/wp-content/cache
 site/wp-content/advanced-cache.php
+site/wp-content/wptouch-data/backups
+site/wp-content/wptouch-data/cache
