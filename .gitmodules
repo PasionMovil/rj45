@@ -1,0 +1,4 @@
+[submodule "site/wp-content/themes/material"]
+	path = site/wp-content/themes/material
+	url = https://github.com/PasionMovil/material.git
+	branch = master
